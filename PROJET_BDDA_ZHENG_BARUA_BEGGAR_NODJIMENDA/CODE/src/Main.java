@@ -6,7 +6,7 @@ public class Main {
     DBParams.pageSize = 4096;
     DBParams.maxPagesPerFile = 4;
 
-    char[] buffer;
+    //char[] buffer;
   }
 
 }

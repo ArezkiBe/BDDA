@@ -1,4 +1,4 @@
-public Class PageId{
+public class PageId{
 
   
   private int fileIdx;
@@ -17,11 +17,11 @@ public Class PageId{
     return pageIdx;
   }
 
-  public int setId(int newId){
+  public void setId(int newId){
     this.fileIdx=newId;
   }
 
-  public int setIndice(int newIndice){
+  public void setIndice(int newIndice){
     this.pageIdx=newIndice;
   }
 }

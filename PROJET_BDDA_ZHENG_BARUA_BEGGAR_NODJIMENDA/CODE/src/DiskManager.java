@@ -20,7 +20,6 @@ public class DiskManager {
   public PageId allocPage(){
     PageId page = new PageId();
     int numero_fichier = 0;
-    int numero_page = 0;
 
     if (pageDispo.size()==0){
       File fichier = new File(DBParams.DBPath + "/f" +numero_fichier + ".bdda");
@@ -44,7 +43,7 @@ public class DiskManager {
     }
 
     else {
-      page = PageDispo.size();
+      page = PageDispo(0);
       PageDispo.remove(0);
       return page;
 

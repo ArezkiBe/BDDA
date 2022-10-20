@@ -3,18 +3,18 @@ import java.nio.ByteBuffer;
 public class Frame {
 	
 	private ByteBuffer buffer;
-		private PageId page;
+	private PageId page;
 	private int pin_count;
-	private boolean dirty;
+	private int dirty;
 	
-	private int der_util;
+	private long der_util;
 	
-	public Frame (ByteBuffer buffer, PageId page, int pin_count,boolean dirty) {
-		
-		this.buffer=buffer;
-		this.page=page;
-		this.pin_count= pin_count;
-		this.dirty=dirty;
+	public Frame() {
+		this.buffer=ByteBuffer.allocate(DBParams.pageSize);
+		this.page = null;
+		this.pin_count=0;
+		this.dirty=0;
+		this.der_util=-1;
 	}
 	
 	public ByteBuffer getBuffer() {
@@ -41,20 +41,29 @@ public class Frame {
 		this.pin_count = pin_count;
 	}
 
-	public boolean isDirty() {
+	public int isDirty() {
 		return dirty;
 	}
 
-	public void setDirty(boolean dirty) {
+	public void setDirty(int dirty) {
 		this.dirty = dirty;
 	}
 
-	public int getDer_util() {
+	public long getDer_util() {
 		return der_util;
 	}
 
 	public void setDer_util(int der_util) {
 		this.der_util = der_util;
+	}
+	
+	public void incrementerPin() {
+		this.pin_count++;
+	}
+	
+	public void decrementerPin() {
+		if (this.pin_count>0) this.pin_count--;
+		if (this.pin_count==0) this.der_util=System.currentTimeMillis();
 	}
 	
 

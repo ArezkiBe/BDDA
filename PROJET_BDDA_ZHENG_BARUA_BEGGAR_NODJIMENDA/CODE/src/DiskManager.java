@@ -15,9 +15,6 @@ public class DiskManager {
 
 	private DiskManager() {};
 
-
-
-
 	public PageId allocPage(){
 		PageId page = new PageId();
 		int numero_fichier = 0;
